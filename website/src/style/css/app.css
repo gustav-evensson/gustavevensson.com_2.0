@@ -12,8 +12,34 @@
   transition: background-color 300ms, color 300ms, stroke 300ms, fill 300ms;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-color);
+  overflow-x: hidden;
+}
+
+#app {
+  width: 100%;
+  position: relative;
+}
+
+.scrollbar-track-y.show {
+  background: transparent;
+}
+.scrollbar-track-y.show .scrollbar-thumb-y {
+  background-color: #999;
+}
+
+.scrollbar-track {
+  width: 5px;
+  background: transparent !important;
+}
+.scrollbar-track .scrollbar-thumb {
+  width: 5px;
+  background-color: #999;
 }
 
 .standardLink {
@@ -44,6 +70,33 @@ body {
 
 .standardLink:hover::before {
   width: 100%;
+}
+
+.sectionTitle {
+  color: var(--text-color);
+  position: relative;
+}
+.sectionTitle .sectionNumber {
+  position: absolute;
+  font-size: 128px;
+  font-weight: bolder;
+  opacity: 0.1;
+  left: 0;
+  top: 0;
+  translate: -50% -40%;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: var(--text-color);
+}
+.sectionTitle h3 {
+  font-size: 32px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.sectionTitle p {
+  font-size: 24px;
+  font-weight: 300;
 }
 
 .startAnimationContainer {
@@ -109,9 +162,6 @@ nav .navItems {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-nav .navItems .geLogo {
-  cursor: pointer;
 }
 nav .navItems .geLogo path {
   stroke: var(--text-color);

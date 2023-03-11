@@ -9,17 +9,16 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
 	min-height: 100vh;
-    overflow: hidden;
     .homeContent{
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 16px;
+        padding: 0 5vw;
         h1 {
             cursor: default;
-            font-size: 64px;
+            font-size: clamp(32px, 5vw, 64px);
             text-align: center;
             text-transform: uppercase;
             color: var(--text-color);
@@ -38,6 +37,7 @@
             align-items: center;
             justify-content: center;
             gap: 32px;
+            flex-wrap: wrap;
         }
     }
     .bgArt{
@@ -47,5 +47,31 @@
         max-width: unset;
         opacity: .3;
         z-index: -1;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #home{
+        .homeContent{
+            .socialLinks{
+                gap: 16px;
+                // a{
+                //     scale: 0.8;
+                // }
+            }
+        }
+    }
+}
+@media screen and (max-width: 400px) {
+    #home{
+        .homeContent{
+            .socialLinks{
+                gap: 16px;
+                flex-direction: column;
+                // a{
+                //     scale: 0.8;
+                // }
+            }
+        }
     }
 }

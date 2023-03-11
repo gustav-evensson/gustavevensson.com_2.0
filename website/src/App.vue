@@ -4,86 +4,86 @@ import sunIcon from './svgIcons/sunIcon.vue';
 import moonIcon from './svgIcons/moonIcon.vue';
 import anime from 'animejs/lib/anime.es.js';
 import { onMounted, reactive, ref } from 'vue';
-import { useThemeStore } from './pinia/store'
+import { useThemeStore } from './pinia/store';
 import homeView from './views/homeView.vue';
+import aboutView from './views/aboutView.vue';
+import toolsView from './views/toolsView.vue';
+import workView from './views/workView.vue';
+import contactView from './views/contactView.vue';
 
-const themeStore = useThemeStore()
+const themeStore = useThemeStore();
 
 const menuItems = ref(null);
 const geLogo = ref(null);
 const navActions = ref(null);
-const root = document.querySelector(":root");
+const root = document.querySelector(':root');
 const data = reactive({
 	showMenu: false,
-  isDarkMode: false
+	isDarkMode: false,
 });
 
 onMounted(() => {
-  data.isDarkMode = themeStore.isDarkMode
-  if(data.isDarkMode){
-    root.style.setProperty('--text-color', '#FFFFFF')
-    root.style.setProperty('--bg-color', '#1C1C1C')
-  }
-  var tl = anime.timeline({
-    easing: 'easeOutQuad',
-  })
+	data.isDarkMode = themeStore.isDarkMode;
+	if (data.isDarkMode) {
+		root.style.setProperty('--text-color', '#FFFFFF');
+		root.style.setProperty('--bg-color', '#1C1C1C');
+	}
+	var tl = anime.timeline({
+		easing: 'easeOutQuad',
+	});
 
-  tl
-  .add({
-    targets: geLogo.value,
-    translateY: [-100, 0],
-    duration: 400,
-    delay: 4000
-  })
-  .add({
-    targets: [...navActions.value.childNodes],
-    translateY: [-100, 0],
-    duration: 400,
-    delay: anime.stagger(200)
-  })
-})
+	tl.add({
+		targets: geLogo.value,
+		translateY: [-100, 0],
+		duration: 400,
+		delay: 4000,
+	}).add({
+		targets: [...navActions.value.childNodes],
+		translateY: [-100, 0],
+		duration: 400,
+		delay: anime.stagger(200),
+	});
+});
 
-function switchTheme(){
-  if(!data.isDarkMode){
-    root.style.setProperty('--text-color', '#FFFFFF')
-    root.style.setProperty('--bg-color', '#1C1C1C')
-  }
-  else{
-    root.style.setProperty('--text-color', '#000000')
-    root.style.setProperty('--bg-color', '#FFFFFF')
-  }
-  themeStore.switchTheme()
-  data.isDarkMode = !data.isDarkMode
+function switchTheme() {
+	if (!data.isDarkMode) {
+		root.style.setProperty('--text-color', '#FFFFFF');
+		root.style.setProperty('--bg-color', '#1C1C1C');
+	} else {
+		root.style.setProperty('--text-color', '#000000');
+		root.style.setProperty('--bg-color', '#FFFFFF');
+	}
+	themeStore.switchTheme();
+	data.isDarkMode = !data.isDarkMode;
 }
 
 function showMenu() {
-  if(!data.showMenu){
-    anime({
-      targets: [...menuItems.value.childNodes],
-      translateX: [-50, 0],
-      opacity: [0, 1],
-      duration: 200,
-      easing: 'easeOutSine',
-      delay: anime.stagger(100),
-    });
-  }
-  else{
-    anime({
-      targets: [...menuItems.value.childNodes],
-      translateX: [0, -50],
-      opacity: [1, 0],
-      duration: 200,
-      easing: 'easeOutSine',
-      delay: anime.stagger(100),
-    });
-  } // cubicBezier(1,-1.26,.92,.73)
-  data.showMenu = !data.showMenu;
+	if (!data.showMenu) {
+		anime({
+			targets: [...menuItems.value.childNodes],
+			translateX: [-50, 0],
+			opacity: [0, 1],
+			duration: 200,
+			easing: 'easeOutSine',
+			delay: anime.stagger(100),
+		});
+	} else {
+		anime({
+			targets: [...menuItems.value.childNodes],
+			translateX: [0, -50],
+			opacity: [1, 0],
+			duration: 200,
+			easing: 'easeOutSine',
+			delay: anime.stagger(100),
+		});
+	} // cubicBezier(1,-1.26,.92,.73)
+	data.showMenu = !data.showMenu;
 }
 </script>
 
 <template>
-  <div class="startAnimationContainer">
-    <svg width="132" height="70" viewBox="0 0 132 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<div class="startAnimationContainer">
+		<svg width="132" height="70" viewBox="0 0 132 70" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path
 				class="outer"
 				d="M66 68H3C2.44772 68 2 67.5523 2 67V61C2 60.4477 2.43145 60 2.98373 60C8.60437 60 37.0672 60 56 60C60 60 62 58 62 54C62 49.6655 62 43.4043 62 40.9958C62 40.4435 61.5523 40 61 40H3C2.44771 40 2 39.5523 2 39V32C2 32 2 32 2 32C2 32 2 22.2484 2 16C2 8 8 2 16 2C31.621 2 40.379 2.00001 56 2C64 2 66 7 66 7"
@@ -113,7 +113,7 @@ function showMenu() {
 				stroke-linecap="round"
 			/>
 		</svg>
-  </div>
+	</div>
 	<nav>
 		<div class="navItems">
 			<svg ref="geLogo" class="geLogo" width="66" height="35" viewBox="0 0 66 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,21 +134,25 @@ function showMenu() {
 			</svg>
 
 			<div ref="navActions" class="navActions">
-				<div class="themeSwitch" @click="switchTheme()" :class="{themeSwitched: data.isDarkMode}">
+				<div class="themeSwitch" @click="switchTheme()" :class="{ themeSwitched: data.isDarkMode }">
 					<sun-icon />
 					<moon-icon />
 				</div>
 				<div :class="{ showMenu: data.showMenu }" class="navMenu">
 					<menu-btn @click="showMenu()" />
 					<div ref="menuItems" class="menuItems">
-						<a href="">Home</a>
-						<a href="">About</a>
-						<a href="">Work</a>
-						<a href="">Contact</a>
+						<a href="#home">Home</a>
+						<a href="#about">About</a>
+						<a href="#work">Work</a>
+						<a href="#contact">Contact</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</nav>
-	<home-view/>
+	<home-view />
+	<about-view />
+	<tools-view />
+	<work-view />
+	<contact-view/>
 </template>

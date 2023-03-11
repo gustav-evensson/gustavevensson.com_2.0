@@ -20,7 +20,7 @@ onMounted(() => {
         opacity: [0, .3],
         duration: 300,
         easing: 'easeOutSine',
-        delay: 5000
+        delay: 4000
     })
     .add(
         {

@@ -9,40 +9,92 @@
 	box-sizing: border-box;
 	font-family: 'Avenir', sans-serif;
 	font-kerning: none;
-    transition: background-color 300ms, color 300ms, stroke 300ms, fill 300ms;
+	transition: background-color 300ms, color 300ms, stroke 300ms, fill 300ms;
 }
 
-body{
-    background-color: var(--bg-color);
+html{
+	scroll-behavior: smooth;
 }
 
+body {
+	background-color: var(--bg-color);
+	overflow-x: hidden;
+}
 
-.standardLink {
-  font-size: 24px;
-  color: var(--text-color);
-  text-decoration: none;
-  display: flex;
-  gap: 6px;
-  font-weight: 400;
-  align-items: center;
-  position: relative;
-  width: fit-content;
-  svg path {
-    stroke: var(--text-color);
+#app{
+	width: 100%;
+	position: relative;
+}
+
+.scrollbar-track-y.show {
+  background: transparent;
+  .scrollbar-thumb-y {
+    background-color: #999;
   }
 }
+
+.scrollbar-track {
+  width: 5px;
+  background: transparent !important;
+  .scrollbar-thumb {
+    width: 5px;
+    background-color: #999;
+  }
+}
+
+.standardLink {
+	font-size: 24px;
+	color: var(--text-color);
+	text-decoration: none;
+	display: flex;
+	gap: 6px;
+	font-weight: 400;
+	align-items: center;
+	position: relative;
+	width: fit-content;
+	svg path {
+		stroke: var(--text-color);
+	}
+}
 .standardLink::before {
-  content: "";
-  position: absolute;
-  height: 2px;
-  width: 30%;
-  bottom: 0;
-  left: 0;
-  background-color: var(--text-color);
-  transition: width 200ms;
+	content: '';
+	position: absolute;
+	height: 2px;
+	width: 30%;
+	bottom: 0;
+	left: 0;
+	background-color: var(--text-color);
+	transition: width 200ms;
 }
 .standardLink:hover::before {
-  width: 100%;
+	width: 100%;
+}
+
+.sectionTitle {
+	color: var(--text-color);
+	position: relative;
+	.sectionNumber {
+		position: absolute;
+		font-size: 128px;
+		font-weight: bolder;
+		opacity: 0.1;
+		left: 0;
+		top: 0;
+		translate: -50% -40%;
+		-webkit-text-fill-color: transparent;
+		-webkit-text-stroke-width: 4px;
+		-webkit-text-stroke-color: var(--text-color);
+	}
+	h3 {
+		font-size: 32px;
+		font-weight: 400;
+		text-transform: uppercase;
+		margin-bottom: 16px;
+	}
+	p {
+		font-size: 24px;
+		font-weight: 300;
+	}
 }
 
 .startAnimationContainer {
@@ -54,14 +106,14 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-    pointer-events: none;
-    animation: reveal 300ms 3.5s linear forwards;
-    z-index: 50;
-    background-color: var(--bg-color);
+	pointer-events: none;
+	animation: reveal 300ms 3.5s linear forwards;
+	z-index: 50;
+	background-color: var(--bg-color);
 	svg {
-        path{
-            stroke: var(--text-color);
-        }
+		path {
+			stroke: var(--text-color);
+		}
 		.outer {
 			stroke-dasharray: 305.924;
 			animation: outer 1s linear forwards;
@@ -92,9 +144,9 @@ body{
 	}
 }
 @keyframes reveal {
-    to{
-        opacity: 0;
-    }
+	to {
+		opacity: 0;
+	}
 }
 
 nav {
@@ -114,7 +166,6 @@ nav {
 		align-items: center;
 		justify-content: space-between;
 		.geLogo {
-			cursor: pointer;
 			path {
 				stroke: var(--text-color);
 			}
