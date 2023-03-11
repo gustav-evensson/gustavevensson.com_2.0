@@ -5,6 +5,7 @@ import moonIcon from './svgIcons/moonIcon.vue';
 import anime from 'animejs/lib/anime.es.js';
 import { onMounted, reactive, ref } from 'vue';
 import { useThemeStore } from './pinia/store'
+import homeView from './views/homeView.vue';
 
 const themeStore = useThemeStore()
 
@@ -63,7 +64,7 @@ function showMenu() {
       opacity: [0, 1],
       duration: 200,
       easing: 'easeOutSine',
-      delay: anime.stagger(50),
+      delay: anime.stagger(100),
     });
   }
   else{
@@ -73,9 +74,9 @@ function showMenu() {
       opacity: [1, 0],
       duration: 200,
       easing: 'easeOutSine',
-      delay: anime.stagger(50),
+      delay: anime.stagger(100),
     });
-  }
+  } // cubicBezier(1,-1.26,.92,.73)
   data.showMenu = !data.showMenu;
 }
 </script>
@@ -149,4 +150,5 @@ function showMenu() {
 			</div>
 		</div>
 	</nav>
+	<home-view/>
 </template>
