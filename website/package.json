@@ -9,8 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "animejs": "^3.2.1",
     "aos": "^2.3.4",
+    "emailjs": "^4.0.1",
     "pinia": "^2.0.33",
     "pinia-plugin-persistedstate": "^3.1.0",
     "smooth-scrollbar": "^8.8.1",

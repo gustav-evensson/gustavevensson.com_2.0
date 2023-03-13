@@ -26,20 +26,23 @@ body {
   position: relative;
 }
 
-.scrollbar-track-y.show {
-  background: transparent;
-}
-.scrollbar-track-y.show .scrollbar-thumb-y {
-  background-color: #999;
+::-webkit-scrollbar {
+  width: 5px;
 }
 
-.scrollbar-track {
-  width: 5px;
-  background: transparent !important;
+::-webkit-scrollbar-track {
+  background-color: transparent;
 }
-.scrollbar-track .scrollbar-thumb {
+
+::-webkit-scrollbar-thumb {
+  background: #999999;
   width: 5px;
-  background-color: #999;
+  border-radius: 2.5px;
+  transition: background 200ms;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-color);
 }
 
 .standardLink {
